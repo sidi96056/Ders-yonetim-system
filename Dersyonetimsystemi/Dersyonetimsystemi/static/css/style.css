@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+
+.ana{
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+#log{
+    padding-left: 20px;
+}
+
+
+.sidbare{
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 370px;
+    z-index: 1000;
+    background:#040314;
+    padding: 15px;
+    text-decoration:none ;
+}
+.logo-img{
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 150px;
+    margin-top: -25%;
+    text-align: center;
+    margin-left: 25%;
+}
+
+.logo-details{
+    
+   
+ 
+}
+.logo-name {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    margin-left:15% ;
+}
+#spand {
+    margin-left: -20px;
+    font-weight: 900;
+    font-size: 400%;
+    color: #ffffff;
+    padding-left: 17px;
+    text-decoration: none;
+
+}
+.search{
+    --padding:10px;
+    width:max-content;
+    margin-left:-10px ;
+    display: flex;
+    align-items:center;
+    padding: var(--padding);
+    border-radius:28px;
+    background-color:#f6f6f6;
+    transition: box-shadow 0.25s;
+}
+.search:focus-within{
+   box-shadow:0 0 2px rgba(70,0,0,75);
+}
+.search-input{
+    font-size: 14px;
+    font-family: 'lexend' ,sans-serif;
+    color:#333333;
+    margin-left: var(--padding);
+    outline: none;
+    background:transparent;
+    border:none;
+    width: 293px;;
+}
+.search-input::placeholder{
+    color:rgba(0, 0, 0, 25);
+}
+.search-icon{
+    color:black;
+}
+
+.nav-links{ 
+    margin-left: -12px;
+    
+}
+
+
+.li-links{
+    position: relative;
+    color:#ffffff;
+    width: 100%;
+    list-style-type: none;
+    font-size: 134%;
+    padding: 10px;
+    text-decoration-style: none;
+    
+}
+.li-links:hover{
+         color: #fff;
+        display: flex;
+        gap: 10px;
+        white-space: nowrap;
+        border-radius: 8px;
+        padding: 12px 15px;
+        align-items: center;
+        text-decoration: none;
+        transition: 0.4s ease;
+}
+.nav-links .showMenu span.sublist{
+    display: block;
+}
+.nav-links .showMenu span.bi-chevron-down{
+    transform: rotate(-180deg);
+}
+
+.sublist {
+    background-color: #040314;
+    list-style-type: none;
+    padding: 6px 6px 14px 51px;
+    margin-top: -20px;
+    /*display: none;*/
+    color:#fff;
+    border-radius:0 8px 8px 0;
+    transition: all 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+.li-links:hover .sublist {
+    top: 0;
+    opacity: 1;
+    pointer-events: auto;
+
+   
+}
+.sublist a{
+    color:#fff;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    padding-bottom: 10px;
+}
+.sublist a:hover{
+    opacity: 1;
+    color:#fff;
+    text-decoration: none;
+    text-shadow: #000000;
+}
+
+/*
+.sublist .head {
+    font-weight: 800;
+    opacity: 1;
+    display: block;
+
+}*/
+
+#close{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: 0;
+    padding: 10px 20px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+span{
+    color: #fff;
+    margin: 10px;
+    font-weight: 900;
+    text-decoration: none;
+
+}
+#HG , #SP , #PL , #BS , #TK , #OH , #TV , #RB , #R , #BH{
+    color:#161524;
+    font-weight: 900;
+    text-decoration: none;
+}
+h3{
+    font-size: x-large;
+    font-weight: 900;
+    color: rgb(77, 73, 73);
+
+}
+p{
+    font-size:150%;
+ 
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+section{
+    padding-left: 37px;
+    background-color:#161524;
+}
+
+.log{
+    padding-left: 80%;
+    margin: 5px;
+
+}
+
+svg,a
+{
+    color:rgb(200, 246, 246);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+span:hover{
+    text-decoration: none;
+}
+#fb{
+  padding: 20px;
+  color: #fff;
+}
+#al{
+    color: #ffffff;
+    text-decoration: none;
+}
+footer {
+    padding-bottom: 100%;
+    padding-right: 10000%;
+    background-color:#000000;
+    text-align: center;
+
+
+}
+
+.main-content {
+  flex-grow: 1; 
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.top-header {
+  width: 100%;
+  height: 70px; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; 
+  padding: 0 50px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-right {
+  display: flex;
+  gap: 15px; 
+}
+
+
+.btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.btn-login {
+  background-color: #d32f2f; 
+  color: white;
+}
+
+.btn-login:hover {
+  background-color: #b71c1c; 
+}
+
+
+.btn-logout {
+  background-color: transparent;
+  border: 2px solid #ea1353; 
+}
+
+.btn-logout:hover {
+  background-color: #b91d34;
+  color: white;
+}
+
+
+
+.top-navbar {
+    display: flex;
+    /* Use space-between to push the new links (left) away from the buttons (right) */
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    height: 70px;
+    padding: 0 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+
+.header-links {
+    display: flex;
+    gap: 25px;
+}
+
+
+.header-links .nav-link {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header-links .nav-link:hover {
+    color: #0b0c15;
+    
+}
+
+
+.header-links .nav-link.active {
+    color: #0b0c15;
+    
+    font-weight: 600;
+}
+
+.header-links .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: #d32f2f;
+
+    border-radius: 2px;
+}
+
+/* (The existing .auth-buttons and .btn styles from the previous step remain the same) */
+
+
+
+
+/* 1. Footer Positioning and Base Style */
+.main-footer {
+    /* Locks the footer to the bottom of the viewport */
+    position: fixed;
+    bottom: 0;
+
+    /* Must match the sidebar width (240px) */
+    left: 240px;
+
+    /* Sets the width to cover the main content area */
+    width: calc(100% - 240px);
+
+    height: 40px;
+    /* Set a consistent height */
+    background-color: #050a0f;
+    /* Light background */
+    color: #f6f7f8;
+    /* Dark grey text */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    /* Vertically center the text */
+    padding: 0 590px;
+    z-index: 99;
+    /* Ensure it stays above other content */
+}
+
+/* 2. Style the Copyright Text */
+.footer-content p {
+    margin: 0;
+    /* Remove default paragraph margin */
+    font-size: 14px;
+}
+
