@@ -297,7 +297,6 @@ footer {
 
 .top-navbar {
     display: flex;
-    /* Use space-between to push the new links (left) away from the buttons (right) */
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
@@ -347,42 +346,29 @@ footer {
     border-radius: 2px;
 }
 
-/* (The existing .auth-buttons and .btn styles from the previous step remain the same) */
 
 
-
-
-/* 1. Footer Positioning and Base Style */
 .main-footer {
-    /* Locks the footer to the bottom of the viewport */
     position: fixed;
     bottom: 0;
 
-    /* Must match the sidebar width (240px) */
     left: 240px;
 
-    /* Sets the width to cover the main content area */
     width: calc(100% - 240px);
 
     height: 40px;
-    /* Set a consistent height */
     background-color: #050a0f;
-    /* Light background */
     color: #f6f7f8;
-    /* Dark grey text */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
-    /* Vertically center the text */
     padding: 0 590px;
     z-index: 99;
-    /* Ensure it stays above other content */
 }
 
-/* 2. Style the Copyright Text */
 .footer-content p {
     margin: 0;
-    /* Remove default paragraph margin */
     font-size: 14px;
 }
+
 
