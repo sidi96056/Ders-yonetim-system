@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Account - Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #d1e2f7; 
+            background-image: linear-gradient(135deg, #d1e2f7 0%, #a8c0e2 100%);
+        }
+        .form-input-lg {
+            @apply w-full border-none px-4 py-3 text-lg rounded-lg bg-gray-100 shadow-inner placeholder-gray-400 focus:ring-2 focus:ring-blue-400 focus:bg-white transition duration-200;
+        }
+        
+        .summary-box {
+            background-color: #f7f9fc; 
+        }
+        .subscribe-btn {
+            background-color: #eb459f;
+            @apply hover:bg-pink-700 transition duration-150 shadow-lg text-white font-bold py-3 px-4 rounded-lg;
+        }
+    </style>
+    <script>
+        function handleSubscription() {
+            const agreement = document.getElementById('agreement').checked;
+            if (agreement) {
+                alert('Subscription initiated! (Functionality not implemented)');
+            } else {
+                alert('Please agree to the Terms and Conditions.');
+            }
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center py-16">
+
+    <div class="max-w-4xl w-full bg-white rounded-xl shadow-2xl p-6 sm:p-10 lg:p-16">
+     
+        <header class="text-center mb-10 sm:mb-16">
+            <h1 class="text-3xl sm:text-4xl font-light text-gray-800 tracking-wide">Start Your Account</h1>
+            <p class="text-gray-500 mt-2 text-sm sm:text-base">Step 3 of 3</p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
+
+  
+            <div class="space-y-8">
+                
+        
+                <div>
+                    <h2 class="text-xl font-medium text-gray-700 mb-4 flex justify-between items-center">
+                        Pay with card
+                        <img src="https://api.stripe.com/v1/files/file_1M0hH2J1Xg2kX8O1j5d8yQ1" 
+                             alt="Powered by Stripe" 
+                             class="h-5" 
+                             onerror="this.style.display='none';">
+                    </h2>
+                    
+               
+                    <div class="space-y-4">
+                        
+                        <div class="relative">
+                            <input type="text" placeholder="0000 0000 0000 0000" class="form-input-lg" maxlength="19">
+                            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        </div>
+                      
+                        <div class="flex space-x-4">
+                            <input type="text" placeholder="MM / YY" class="form-input-lg" maxlength="5">
+                            <div class="relative w-full">
+                                <input type="text" placeholder="CVC" class="form-input-lg pr-10" maxlength="4">
+                                <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            </div>
+                        </div>
+
+              
+                        <input type="text" placeholder="Name On Card" class="form-input-lg">
+                    </div>
+                </div>
+               
+                <div>
+                    <h2 class="text-xl font-medium text-gray-700 mb-4">Country or Region</h2>
+                    <select class="form-input-lg appearance-none">
+                        <option>Australia</option>
+                        <option>United States</option>
+                        <option>Canada</option>
+                    </select>
+                </div>
+                <div>
+                    <h2 class="text-xl font-medium text-gray-700 mb-4">Contact Information</h2>
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Name" class="form-input-lg">
+                        <div class="flex space-x-4">
+                            <input type="email" placeholder="Email" class="form-input-lg w-1/2">
+                            <input type="tel" placeholder="Phone" class="form-input-lg w-1/2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="lg:sticky lg:top-10">
+                <div class="summary-box rounded-xl p-6 space-y-5">
+                    
+                    <h2 class="text-sm font-semibold uppercase text-gray-600 mb-4 tracking-wider">
+                        Subscribe to
+                    </h2>
+                    <h3 class="text-xl font-bold text-gray-800">
+                        Dogshare Membership
+                    </h3>
+              
+                    <div class="space-y-3 pt-2 border-t border-gray-200">
+                        <div class="flex justify-between pt-3">
+                            <span class="text-gray-600">Subscription</span>
+                            <span class="text-pink-600 font-semibold">$9 AUD</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Application fee</span>
+                            <span class="text-pink-600 font-semibold">$20 AUD</span>
+                        </div>
+                        <p class="text-xs text-gray-500 -mt-2">Once Only</p>
+                    </div>
+   
+                    <div class="pt-4 space-y-2">
+                        <label class="text-sm font-semibold text-gray-600">Apply Discount Code</label>
+                        <div class="relative">
+                            <input type="text" placeholder="Code" class="form-input-lg focus:ring-pink-500" />
+                            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </div>
+                
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                        <span class="text-lg font-bold text-gray-800">Total</span>
+                        <span class="text-2xl font-bold text-pink-600">$29 AUD</span>
+                    </div>
+                    <div class="flex items-start pt-4">
+                        <input type="checkbox" id="agreement" class="mt-1 h-4 w-4 rounded text-pink-600 border-gray-300 focus:ring-pink-500">
+                        <label for="agreement" class="ml-3 text-sm text-gray-600">
+                            I agree to the <span class="text-pink-600 font-medium">Terms and Conditions</span> and the Automatic Renewal Terms above
+                        </label>
+                    </div>
+                    <button onclick="handleSubscription()" class="w-full subscribe-btn">
+                        SUBSCRIBE
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
