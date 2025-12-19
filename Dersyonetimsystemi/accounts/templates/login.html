@@ -1,28 +1,63 @@
-{%extends 'base.html'%}
-
-{%block content%}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(90deg, #4ade80 0%, #facc15 50%, #a855f7 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { width: 400px; background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); padding: 40px; display: flex; flex-direction: column; align-items: center; }
+        h2 { color: #fff; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .input-group { position: relative; width: 100%; margin-bottom: 20px; }
+        .input-group input { width: 100%; padding: 12px 12px 12px 40px; background: rgba(255, 255, 255, 0.4); border: none; outline: none; border-radius: 8px; color: #fff; font-size: 1rem; transition: 0.3s; }
+        .input-group input::placeholder { color: #fff; opacity: 0.8; }
+        .input-group input:focus { background: rgba(255, 255, 255, 0.6); color: #333; }
+        .input-group i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #fff; }
+        .btn-submit { width: 100%; padding: 12px; border: none; border-radius: 30px; background: #fff; color: #333; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { transform: scale(1.02); background: #f0f0f0; }
+        .footer-text { color: #fff; font-size: 0.9rem; margin-top: 15px; width: 100%; display: flex; justify-content: space-between; }
+        .footer-text a { color: #fff; font-weight: 600; text-decoration: underline; font-size: 0.8rem; }
+        .django-messages { width: 100%; margin-bottom: 15px; }
+        .alert { padding: 10px; border-radius: 8px; color: #fff; font-size: 0.85rem; margin-bottom: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        .alert.success { background: rgba(34, 197, 94, 0.6); }
+    </style>
+</head>
 <body>
-  <div class="background"></div>
+    <div class="container">
+        <h2>Giriş Yap</h2>
 
-  <div class="login-container">
-    <h2>Login</h2>
-    <form>
-      <div class="input-group">
-        <i class="fas fa-envelope"></i>
-        <input type="email" placeholder="Email" required />
-      </div>
-      <div class="input-group">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" required />
-      </div>
-      <div class="options">
-        <label><input type="checkbox" /> Remember me</label>
-        <a href="#">Forgot Password?</a>
-      </div>
-      <button type="submit">Login</button>
-      <p class="register">Don't have an account? <a href="#">Register</a></p>
-    </form>
-  </div>
-  
+        {% if messages %}
+            <div class="django-messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" placeholder="Şifre" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Giriş Yap</button>
+        </form>
+
+        <div class="footer-text">
+            <a href="{% url 'forgot_password' %}">Şifremi Unuttum?</a>
+            <a href="{% url 'register' %}">Kayıt Ol</a>
+        </div>
+    </div>
 </body>
-{%endblock%}
+</html>
