@@ -19,7 +19,12 @@ from django.urls import path , include
 from Dersyonetimsystemi import views
 
 urlpatterns = [
-    path('',views.home),
-     path('accounts/',include('accounts.urls')),
+    path('',views.home, name="home"),
+    #path('base/',views.base, name="base"),
+    path('login/',views.login, name="login"),
+    path('register/',views.register, name="register"),
+    path('subscribe/',views.subscribe, name="subscribe"),
+    path('paid/',views.paid, name="paid"),
+    path('accounts/',include('accounts.urls')),
     path('admin/', admin.site.urls)
 ]
