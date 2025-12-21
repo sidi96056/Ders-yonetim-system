@@ -90,3 +90,4 @@ def reset_password_view(request):
         return redirect("login")
 
     return render(request, "reset_password.html")
+
