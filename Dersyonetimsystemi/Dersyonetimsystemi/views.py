@@ -11,6 +11,9 @@ from django.http import HttpResponse
 def home(request):
     return render(request,"base.html")
 
+#def base(request):
+    return render(request,"base.html")
+
 
 def login(request):
     return render(request,"login.html")
@@ -23,3 +26,25 @@ def subscribe(request):
 
 def paid(request):
     return render(request,"paid.html")
+
+def paid1(request):
+    return render(request,"paid1.html")
+
+def about(request):
+    return render(request,"about.html")
+
+def contact(request):
+    return render(request,"contact.html")
+
+def profile(request):
+    return render(request,"profile.html")
+
+@login_required
+def profile_view(request):
+    if request.method == "POST":
+        messages.success(request, "Ayarlarınız başarıyla güncellendi.")
+        return redirect('profile')
+        
+    return render(request, "profile.html")
+
+
