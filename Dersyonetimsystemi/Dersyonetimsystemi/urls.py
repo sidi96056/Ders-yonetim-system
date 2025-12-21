@@ -25,6 +25,10 @@ urlpatterns = [
     path('register/',views.register, name="register"),
     path('subscribe/',views.subscribe, name="subscribe"),
     path('paid/',views.paid, name="paid"),
+    path('paid1/',views.paid1, name="paid1"),
+    path('about/',views.about, name="about"),
+    path('contact/', views.contact, name="contact"),
+    path('profile/',views.profile, name="profile"),
     path('accounts/',include('accounts.urls')),
     path('admin/', admin.site.urls)
 ]
