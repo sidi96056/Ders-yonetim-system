@@ -1,0 +1,55 @@
+ {% load static %}
+   <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+   <style>
+    a
+{
+    color:rgb(200, 246, 246);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+   </style>
+
+<div class="profile-page" id="profilePage" style="display: block;">
+    <h2>👤 Profil ve Ayarlar</h2>
+    <div><a href="{% url 'home'%}"> anasayfa </a></div>
+    
+    <p><strong>Ad Soyad:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+    <p><strong>Kullanıcı Adı:</strong> {{ user.username }}</p>
+    <p><strong>E-posta:</strong> {{ user.email }}</p>
+    
+    <p><strong>Rol:</strong> {% if user.is_staff %}Eğitmen{% else %}Öğrenci{% endif %}</p>
+
+    <h3>⚙️ Ayarlar</h3>
+    <form method="POST">
+      {% csrf_token %}
+      
+      <label for="language">Dil Seçimi:</label>
+      <select id="language" name="language">
+        <option>Türkçe</option>
+        <option>English</option>
+      </select>
+
+      <label for="theme">Tema:</label>
+      <select id="theme" name="theme">
+        <option>Koyu</option>
+        <option>Açık</option>
+      </select>
+
+      <label for="notifications">Bildirimler:</label>
+      <select id="notifications" name="notifications">
+        <option>Açık</option>
+        <option>Kapalı</option>
+      </select>
+
+      <label for="passwordChange">Şifre Değiştir:</label>
+      <a href="{% url 'forgot_password' %}" class="btn-signup" style="display:inline-block; padding: 5px 10px; font-size: 12px; text-decoration: none; margin-bottom: 15px;">
+    Şifre Sıfırlama İsteği Gönder
+</a>
+
+      <button type="submit">Kaydet</button>
+    </form>
+    
+    <a href="{% url 'logout' %}" style="color: #ff4d4d; display: block; margin-top: 20px; text-align: center;">Oturumu Kapat</a>
+</div>
