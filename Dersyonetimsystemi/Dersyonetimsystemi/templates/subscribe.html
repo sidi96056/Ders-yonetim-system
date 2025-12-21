@@ -22,12 +22,30 @@
             color: #22c55e;
             margin-right: 8px;
         }
+         .h{
+            font-weight: bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            padding-bottom: 15px;
+            font-style: italic;
+            font-size: xx-large;
+            
+
+        }
+          .a{
+            text-align: center;
+            font-weight: bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            font-style: italic;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
 
     <div class="container mx-auto px-4 py-16 sm:py-24">
-        <h1 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-12 ml-4">Subscription plans</h1>
+        <h1 class="h" class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-12 ml-4">abonelik pilanlari</h1>
+        <h1><div><a class="a" href="{% url 'home'%}"> anasayfa </a></div></h1>
        
         <div class="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8">
             
@@ -37,26 +55,23 @@
                     <svg class="mx-auto h-10 w-10 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0v10l-8 4-8-4V7m16 0-8 4m-8-4v10m16-4h-2m-4 0h-2m-4 0h-2m-4 0H4"></path>
                     </svg>
-                    <h2 class="text-xl font-bold">Scout</h2>
+                    <h2 class="text-xl font-bold">Genel</h2>
                 </div>
       
                 <div class="p-8 space-y-4">
                     <ul class="text-left text-gray-700 font-medium space-y-3">
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> Single User
+                            <span class="checkmark">&#10003;</span> tek yonetici olabnilir
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 10 Matches included in role
-                        </li>
-                        <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 1 Priority Job Listing per Month
+                            <span class="checkmark">&#10003;</span> 5 tane takvim plani kullanabilirsiniz
                         </li>
                     </ul>
 
                     <div class="pt-6 text-center">
-                        <p class="text-4xl font-extrabold text-gray-800 mb-2">FREE</p>
+                        <p class="text-4xl font-extrabold text-gray-800 mb-2"></p>
                         <button class="w-full py-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg transition duration-150 shadow-md">
-                            Get Started
+                            <a href="{%url 'login'%}" >Hemen basla</a>
                         </button>
                     </div>
                 </div>
@@ -68,31 +83,31 @@
                     <svg class="mx-auto h-10 w-10 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l-7-7-7 7m7-7v7m0 0H9m5 0h2m-6 4h4m-4 0h-4"></path>
                     </svg>
-                    <h2 class="text-xl font-bold">Smart</h2>
+                    <h2 class="text-xl font-bold">akili</h2>
                 </div>
     
                 <div class="p-8 space-y-4">
                     <ul class="text-left text-gray-700 font-medium space-y-3">
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> Up To 5 Users
+                            <span class="checkmark">&#10003;</span> 5 yonetici olabnilir
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 20 Matches included in role
+                            <span class="checkmark">&#10003;</span> 30 tane takvim plani kullanabilirsiniz
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 5 Priority Job Listing per Month
+                            <span class="checkmark">&#10003;</span> illerde tarih alarm yapabilirsiniz
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> Advanced Salary Analytics
+                            <span class="checkmark">&#10003;</span> bizden destek size gelir ihtiyaciniz varsa 
                         </li>
                     </ul>
 
                     <div class="pt-6 text-center">
                         <p class="text-4xl font-extrabold text-gray-800 mb-2">
-                            $25<span class="text-lg font-normal text-gray-500 ml-1">/per month</span>
+                            $10<span class="text-lg font-normal text-gray-500 ml-1">/aylik</span>
                         </p>
                         <button class="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition duration-150 shadow-md">
-                            Get Started
+                          <a href="{%url 'paid'%}">Hemen basla</a>
                         </button>
                     </div>
                 </div>
@@ -104,31 +119,37 @@
                     <svg class="mx-auto h-10 w-10 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <h2 class="text-xl font-bold">Select</h2>
+                    <h2 class="text-xl font-bold">harika</h2>
                 </div>
                
                 <div class="p-8 space-y-4">
                     <ul class="text-left text-gray-700 font-medium space-y-3">
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> Unlimited Users
+                            <span class="checkmark">&#10003;</span> 20 yonetici olabnilir
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 40 Matches included in role
+                            <span class="checkmark">&#10003;</span> sinirsiz takvim plani kullanabilirsiniz
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> 5 Priority Job Listing per Month
+                            <span class="checkmark">&#10003;</span> illerde tarih alarm yapabilirsiniz
                         </li>
                         <li class="flex items-center">
-                            <span class="checkmark">&#10003;</span> Advanced Salary Analytics
+                            <span class="checkmark">&#10003;</span> bizden destek size gelir ihtiyaciniz varsa 
+                        </li>
+                        <li class="flex items-center">
+                            <span class="checkmark">&#10003;</span> yapay zeka destek gelir 
+                        </li>
+                        <li class="flex items-center">
+                            <span class="checkmark">&#10003;</span> baska ihtiyaclar istegebilirsiniz 
                         </li>
                     </ul>
 
                     <div class="pt-6 text-center">
                         <p class="text-4xl font-extrabold text-gray-800 mb-2">
-                            $50<span class="text-lg font-normal text-gray-500 ml-1">/per month</span>
+                            $20<span class="text-lg font-normal text-gray-500 ml-1">/aylik</span>
                         </p>
                         <button class="w-full py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition duration-150 shadow-md">
-                            Get Started
+                            <a href="{%url 'paid1'%}">Hemen basla</a>
                         </button>
                     </div>
                 </div>
