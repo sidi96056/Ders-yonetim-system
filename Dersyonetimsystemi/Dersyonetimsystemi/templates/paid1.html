@@ -13,40 +13,56 @@
         .form-input-lg {
             @apply w-full border-none px-4 py-3 text-lg rounded-lg bg-gray-100 shadow-inner placeholder-gray-400 focus:ring-2 focus:ring-blue-400 focus:bg-white transition duration-200;
         }
-        
-        .summary-box {
-            background-color: #f7f9fc; 
-        }
+        .summary-box { background-color: #f7f9fc; }
         .subscribe-btn {
             background-color: #eb459f;
             @apply hover:bg-pink-700 transition duration-150 shadow-lg text-white font-bold py-3 px-4 rounded-lg;
         }
-        .h{
-            font-weight: bolder;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            text-align: center;
-            padding-bottom: 15px;
-            font-style: italic;
-            font-size: xx-large;
-            
-
-        }
-           .a{
+        .h { font-weight: bolder; font-family: serif; text-align: center; padding-bottom: 15px; font-style: italic; font-size: xx-large; }
+        .a { text-align: center; font-weight: bolder; font-family: serif; font-style: italic; display: block; }
+        #a {
             text-align: center;
             font-weight: bolder;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             text-align: center;
             font-style: italic;
-        }
+            }
     </style>
     <script>
+        function fillTestData() {
+            document.getElementById('card-number').value = "4242 4242 4242 4242";
+            document.getElementById('card-date').value = "12 / 26";
+            document.getElementById('card-cvc').value = "123";
+            document.getElementById('card-name').value = "John Doe";
+            document.getElementById('contact-name').value = "John Doe";
+            document.getElementById('contact-email').value = "john@example.com";
+            document.getElementById('contact-phone').value = "555-0199";
+        }
+
+        
         function handleSubscription() {
             const agreement = document.getElementById('agreement').checked;
-            if (agreement) {
-                alert('Subscription initiated! (Functionality not implemented)');
-            } else {
+            const cardNumber = document.getElementById('card-number').value;
+
+            if (!agreement) {
                 alert('Please agree to the Terms and Conditions.');
+                return;
             }
+
+            if (cardNumber.length < 16) {
+                alert('Please enter a valid card number.');
+                return;
+            }
+            
+            const btn = document.querySelector('.subscribe-btn');
+            btn.innerHTML = "Processing Payment...";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                alert('Payment of $21.50 Successful! (Simulated)');
+                window.location.href = "{% url 'home' %}";
+            }, 2000); 
         }
     </script>
 </head>
@@ -55,255 +71,58 @@
     <div class="max-w-4xl w-full bg-white rounded-xl shadow-2xl p-6 sm:p-10 lg:p-16">
      
         <header class="text-center mb-10 sm:mb-16">
-            <h1  class="h" class="text-3xl sm:text-4xl font-light text-gray-800 tracking-wide">hemen aboneligin baslayin</h1>
-            <div><a class="a" href="{% url 'home'%}"> anasayfa </a></div>
-            <div><a class="a" href="{% url 'subscribe'%}"> önceki Sayfa </a></div>
-            <p class="a" class="text-gray-500 mt-2 text-sm sm:text-base">son adim</p>
+            <h1 class="h">hemen aboneligin baslayin</h1>
+            <a id ="a"class="a text-blue-600" href="{% url 'home'%}"> anasayfa </a>
+            <a id ="a"  href="{% url 'subscribe'%}"> önceki Sayfa </a>
+            <p id ="a" >son adim</p>
         </header>
 
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16">
 
-  
             <div class="space-y-8">
-                
-        
                 <div>
                     <h2 class="text-xl font-medium text-gray-700 mb-4 flex justify-between items-center">
                         kart ile odmem
-                        <img src="https://api.stripe.com/v1/files/file_1M0hH2J1Xg2kX8O1j5d8yQ1" 
-                             alt="Powered by Stripe" 
-                             class="h-5" 
-                             onerror="this.style.display='none';">
+                        <button onclick="fillTestData()" class="text-xs bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-gray-600 transition">
+                            Fill Test Data
+                        </button>
                     </h2>
                     
-               
                     <div class="space-y-4">
-                        
                         <div class="relative">
-                            <input type="text" placeholder="0000 0000 0000 0000" class="form-input-lg" maxlength="19">
-                            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <input id="card-number" type="text" placeholder="0000 0000 0000 0000" class="form-input-lg" maxlength="19">
+                            <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         </div>
                       
                         <div class="flex space-x-4">
-                            <input type="text" placeholder="MM / YY" class="form-input-lg" maxlength="5">
+                            <input id="card-date" type="text" placeholder="MM / YY" class="form-input-lg" maxlength="7">
                             <div class="relative w-full">
-                                <input type="text" placeholder="CVC" class="form-input-lg pr-10" maxlength="4">
-                                <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                                <input id="card-cvc" type="text" placeholder="CVC" class="form-input-lg pr-10" maxlength="4">
+                                <svg class="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                             </div>
                         </div>
 
-              
-                        <input type="text" placeholder="Name On Card" class="form-input-lg">
+                        <input id="card-name" type="text" placeholder="Name On Card" class="form-input-lg">
                     </div>
                 </div>
                
                 <div>
                     <h2 class="text-xl font-medium text-gray-700 mb-4">Ülke veya Bölge</h2>
                     <select class="form-input-lg appearance-none">
-                            <option>Afghanistan</option>
-                            <option>Albania</option>
-                            <option>Algeria</option>
-                            <option>Andorra</option>
-                            <option>Angola</option>
-                            <option>Antigua and Barbuda</option>
-                            <option>Argentina</option>
-                            <option>Armenia</option>
-                            <option>Australia</option>
-                            <option>Austria</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
-                            <option>Belarus</option>
-                            <option>Belgium</option>
-                            <option>Belize</option>
-                            <option>Benin</option>
-                            <option>Bhutan</option>
-                            <option>Bolivia</option>
-                            <option>Bosnia and Herzegovina</option>
-                            <option>Botswana</option>
-                            <option>Brazil</option>
-                            <option>Brunei</option>
-                            <option>Bulgaria</option>
-                            <option>Burkina Faso</option>
-                            <option>Burundi</option>
-                            <option>Cabo Verde</option>
-                            <option>Cambodia</option>
-                            <option>Cameroon</option>
-                            <option>Canada</option>
-                            <option>Central African Republic</option>
-                            <option>Chad</option>
-                            <option>Chile</option>
-                            <option>China</option>
-                            <option>Colombia</option>
-                            <option>Comoros</option>
-                            <option>Congo, Democratic Republic of the</option>
-                            <option>Congo, Republic of the</option>
-                            <option>Costa Rica</option>
-                            <option>Croatia</option>
-                            <option>Cuba</option>
-                            <option>Cyprus</option>
-                            <option>Czechia</option>
-                            <option>Denmark</option>
-                            <option>Djibouti</option>
-                            <option>Dominica</option>
-                            <option>Dominican Republic</option>
-                            <option>Ecuador</option>
-                            <option>Egypt</option>
-                            <option>El Salvador</option>
-                            <option>Equatorial Guinea</option>
-                            <option>Eritrea</option>
-                            <option>Estonia</option>
-                            <option>Eswatini</option>
-                            <option>Ethiopia</option>
-                            <option>Fiji</option>
-                            <option>Finland</option>
-                            <option>France</option>
-                            <option>Gabon</option>
-                            <option>Gambia</option>
-                            <option>Georgia</option>
-                            <option>Germany</option>
-                            <option>Ghana</option>
-                            <option>Greece</option>
-                            <option>Grenada</option>
-                            <option>Guatemala</option>
-                            <option>Guinea</option>
-                            <option>Guinea-Bissau</option>
-                            <option>Guyana</option>
-                            <option>Haiti</option>
-                            <option>Honduras</option>
-                            <option>Hungary</option>
-                            <option>Iceland</option>
-                            <option>India</option>
-                            <option>Indonesia</option>
-                            <option>Iran</option>
-                            <option>Iraq</option>
-                            <option>Ireland</option>
-                            <option>Israel</option>
-                            <option>Italy</option>
-                            <option>Jamaica</option>
-                            <option>Japan</option>
-                            <option>Jordan</option>
-                            <option>Kazakhstan</option>
-                            <option>Kenya</option>
-                            <option>Kiribati</option>
-                            <option>Kuwait</option>
-                            <option>Kyrgyzstan</option>
-                            <option>Laos</option>
-                            <option>Latvia</option>
-                            <option>Lebanon</option>
-                            <option>Lesotho</option>
-                            <option>Liberia</option>
-                            <option>Libya</option>
-                            <option>Liechtenstein</option>
-                            <option>Lithuania</option>
-                            <option>Luxembourg</option>
-                            <option>Madagascar</option>
-                            <option>Malawi</option>
-                            <option>Malaysia</option>
-                            <option>Maldives</option>
-                            <option>Mali</option>
-                            <option>Malta</option>
-                            <option>Marshall Islands</option>
-                            <option>Mauritania</option>
-                            <option>Mauritius</option>
-                            <option>Mexico</option>
-                            <option>Micronesia</option>
-                            <option>Moldova</option>
-                            <option>Monaco</option>
-                            <option>Mongolia</option>
-                            <option>Montenegro</option>
-                            <option>Morocco</option>
-                            <option>Mozambique</option>
-                            <option>Myanmar</option>
-                            <option>Namibia</option>
-                            <option>Nauru</option>
-                            <option>Nepal</option>
-                            <option>Netherlands</option>
-                            <option>New Zealand</option>
-                            <option>Nicaragua</option>
-                            <option>Niger</option>
-                            <option>Nigeria</option>
-                            <option>North Korea</option>
-                            <option>North Macedonia</option>
-                            <option>Norway</option>
-                            <option>Oman</option>
-                            <option>Pakistan</option>
-                            <option>Palau</option>
-                            <option>Palestine</option>
-                            <option>Panama</option>
-                            <option>Papua New Guinea</option>
-                            <option>Paraguay</option>
-                            <option>Peru</option>
-                            <option>Philippines</option>
-                            <option>Poland</option>
-                            <option>Portugal</option>
-                            <option>Qatar</option>
-                            <option>Romania</option>
-                            <option>Russia</option>
-                            <option>Rwanda</option>
-                            <option>Saint Kitts and Nevis</option>
-                            <option>Saint Lucia</option>
-                            <option>Saint Vincent and the Grenadines</option>
-                            <option>Samoa</option>
-                            <option>San Marino</option>
-                            <option>Sao Tome and Principe</option>
-                            <option>Saudi Arabia</option>
-                            <option>Senegal</option>
-                            <option>Serbia</option>
-                            <option>Seychelles</option>
-                            <option>Sierra Leone</option>
-                            <option>Singapore</option>
-                            <option>Slovakia</option>
-                            <option>Slovenia</option>
-                            <option>Solomon Islands</option>
-                            <option>Somalia</option>
-                            <option>South Africa</option>
-                            <option>South Korea</option>
-                            <option>South Sudan</option>
-                            <option>Spain</option>
-                            <option>Sri Lanka</option>
-                            <option>Sudan</option>
-                            <option>Suriname</option>
-                            <option>Sweden</option>
-                            <option>Switzerland</option>
-                            <option>Syria</option>
-                            <option>Taiwan</option>
-                            <option>Tajikistan</option>
-                            <option>Tanzania</option>
-                            <option>Thailand</option>
-                            <option>Timor-Leste</option>
-                            <option>Togo</option>
-                            <option>Tonga</option>
-                            <option>Trinidad and Tobago</option>
-                            <option>Tunisia</option>
-                            <option>Turkey</option>
-                            <option>Turkmenistan</option>
-                            <option>Tuvalu</option>
-                            <option>Uganda</option>
-                            <option>Ukraine</option>
-                            <option>United Arab Emirates</option>
-                            <option>United Kingdom</option>
-                            <option>United States</option>
-                            <option>Uruguay</option>
-                            <option>Uzbekistan</option>
-                            <option>Vanuatu</option>
-                            <option>Vatican City</option>
-                            <option>Venezuela</option>
-                            <option>Vietnam</option>
-                            <option>Yemen</option>
-                            <option>Zambia</option>
-                            <option>Zimbabwe</option>
+                        <option>Turkey</option>
+                        <option>United States</option>
+                        <option>United Kingdom</option>
+                        <option>Germany</option>
                     </select>
                 </div>
+
                 <div>
                     <h2 class="text-xl font-medium text-gray-700 mb-4">iletisim bilgileri</h2>
                     <div class="space-y-4">
-                        <input type="text" placeholder="Name" class="form-input-lg">
+                        <input id="contact-name" type="text" placeholder="Name" class="form-input-lg">
                         <div class="flex space-x-4">
-                            <input type="email" placeholder="Email" class="form-input-lg w-1/2">
-                            <input type="tel" placeholder="Phone" class="form-input-lg w-1/2">
+                            <input id="contact-email" type="email" placeholder="Email" class="form-input-lg w-1/2">
+                            <input id="contact-phone" type="tel" placeholder="Phone" class="form-input-lg w-1/2">
                         </div>
                     </div>
                 </div>
@@ -311,19 +130,13 @@
          
             <div class="lg:sticky lg:top-10">
                 <div class="summary-box rounded-xl p-6 space-y-5">
-                    
-                    <h2 class="text-sm font-semibold uppercase text-gray-600 mb-4 tracking-wider">
-                        Abone ol
-                    </h2>
-                    <h3 class="text-xl font-bold text-gray-800">
-                        
-                        harika Üyeliği
-                    </h3>
+                    <h2 class="text-sm font-semibold uppercase text-gray-600 mb-4 tracking-wider">Abone ol</h2>
+                    <h3 class="text-xl font-bold text-gray-800">akili Üyeliği</h3>
               
                     <div class="space-y-3 pt-2 border-t border-gray-200">
                         <div class="flex justify-between pt-3">
                             <span class="text-gray-600">abonelik</span>
-                            <span class="text-pink-600 font-semibold">$20 USD</span>
+                            <span class="text-pink-600 font-semibold">20 USD</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">KDV</span>
@@ -343,11 +156,14 @@
                         <span class="text-lg font-bold text-gray-800">toplam</span>
                         <span class="text-2xl font-bold text-pink-600">$21.5 USD</span>
                     </div>
+
                     <div class="flex items-start pt-4">
                         <input type="checkbox" id="agreement" class="mt-1 h-4 w-4 rounded text-pink-600 border-gray-300 focus:ring-pink-500">
                         <label for="agreement" class="ml-3 text-sm text-gray-600">
-                             <span class="text-pink-600 font-medium">Yukarıdaki Hüküm ve Koşulları</span>   ve Otomatik Yenileme Şartlarını kabul ediyorum.
+                             <span class="text-pink-600 font-medium">Yukarıdaki Hüküm ve Koşulları</span> ve Otomatik Yenileme Şartlarını kabul ediyorum.
+                        </label>
                     </div>
+
                     <button onclick="handleSubscription()" class="w-full subscribe-btn">
                         SUBSCRIBE
                     </button>
