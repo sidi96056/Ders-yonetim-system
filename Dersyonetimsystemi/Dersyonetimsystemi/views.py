@@ -48,3 +48,8 @@ def profile_view(request):
     return render(request, "profile.html")
 
 
+@login_required
+def subscribe_view(request):
+    return render(request, 'subscribe.html')
+
+
