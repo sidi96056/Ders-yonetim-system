@@ -14,6 +14,13 @@ def home(request):
 #def base(request):
     return render(request,"base.html")
 
+def calendar_view(request):
+    return render(request,"calendar.html")
+
+def live_lesson_view(request):
+    return render(request,"live_lesson.html")
+
+
 
 def login(request):
     return render(request,"login.html")
