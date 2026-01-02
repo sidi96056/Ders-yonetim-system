@@ -15,20 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path, include
 from Dersyonetimsystemi import views
 
 urlpatterns = [
-    path('',views.home, name="home"),
-    #path('base/',views.base, name="base"),
-    path('login/',views.login, name="login"),
-    path('register/',views.register, name="register"),
-    path('subscribe/',views.subscribe, name="subscribe"),
-    path('paid/',views.paid, name="paid"),
-    path('paid1/',views.paid1, name="paid1"),
-    path('about/',views.about, name="about"),
+    path('', views.home, name="home"),
+    path('login/', views.login, name="login"),
+    path('register/', views.register, name="register"),
+    path('subscribe/', views.subscribe, name="subscribe"),
+    path('paid/', views.paid, name="paid"),
+    path('paid1/', views.paid1, name="paid1"),
+    path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
-    path('profile/',views.profile, name="profile"),
-    path('accounts/',include('accounts.urls')),
-    path('admin/', admin.site.urls)
+    path('profile/', views.profile, name="profile"),
+    path('accounts/', include('accounts.urls')),
+    path('admin/', admin.site.urls),
+    path('calender/', include('management.urls')), 
+    path('calender/sil/<int:id>/', include('management.urls'), name="ders_sil"),
+    path('live_lesson/', include('management.urls')),
 ]
