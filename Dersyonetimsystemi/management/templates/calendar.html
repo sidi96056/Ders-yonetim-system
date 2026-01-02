@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .calendar-wrapper {
+        margin-left: 100px;
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+    }
+    
+    .schedule-form input, .schedule-form select {
+        display: block;
+        width: 100%;
+        padding: .6rem .75rem;
+        font-size: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: .5rem;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        background: white;
+    }
+
+    .table thead {
+        background-color: #f8f9fa;
+    }
+
+    .badge-ders {
+        font-weight: 500;
+        letter-spacing: 0.3px;
+    }
+
+    .submit-btn {
+        background-color: #4f46e5;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        width: 100%;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    
+    .btn-delete-custom {
+        background-color: #ef4444;
+        color: white;
+        border: none;
+        padding: 6px 15px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        transition: 0.2s;
+        text-decoration: none;
+    }
+
+    .btn-delete-custom:hover {
+        background-color: #dc2626;
+        color: white;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="calendar-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 mb-4">
+                <div class="card p-4">
+                    <h4 class="fw-bold mb-4 text-dark"><i class="bi bi-plus-circle me-2"></i>Yeni Kayıt Ekle</h4>
+                    <form method="POST" class="schedule-form">
+                        {% csrf_token %}
+                        
+                        <label class="small fw-bold text-muted">TARİH</label>
+                        <input type="date" name="tarih" required>
+
+                        <label class="small fw-bold text-muted">GÜN</label>
+                        <select name="gun" required>
+                            <option value="Pazartesi">Pazartesi</option>
+                            <option value="Salı">Salı</option>
+                            <option value="Çarşamba">Çarşamba</option>
+                            <option value="Perşembe">Perşembe</option>
+                            <option value="Cuma">Cuma</option>
+                            <option value="Cumartesi">Cumartesi</option>
+                            <option value="Pazar">Pazar</option>
+                        </select>
+
+                        <label class="small fw-bold text-muted">SAAT</label>
+                        <input type="time" name="saat" required>
+
+                        <label class="small fw-bold text-muted">PROGRAM ADI</label>
+                        <input type="text" name="ders_adi" placeholder="Örn: Proje Sunumu" required>
+
+                        <label class="small fw-bold text-muted">RENK ETİKETİ</label>
+                        <input type="color" name="renk" value="#3b82f6" style="height: 40px;">
+
+                        <button type="submit" class="submit-btn mt-2">
+                            Programı Listeye Ekle
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-lg-7">
+                <div class="card p-0 overflow-hidden">
+                    <div class="card-header bg-white py-3 border-bottom">
+                        <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-calendar3 me-2"></i>Ajandam</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="ps-4">Tarih / Gün</th>
+                                    <th>Saat</th>
+                                    <th>Program</th>
+                                    <th class="text-center" style="width:120px;">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ders in dersler %}
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="fw-semibold text-dark">{{ ders.tarih|date:"d.m.Y" }}</div>
+                                        <div class="small text-primary">{{ ders.gun }}</div>
+                                    </td>
+                                    <td><span class="text-muted">{{ ders.saat|time:"H:i" }}</span></td>
+                                    <td>
+                                        <span class="badge rounded-pill px-3 py-2 badge-ders" 
+                                              style="background-color: {{ ders.renk|default:'#3b82f6' }}; color: white;font-size: 15px;">
+                                            {{ ders.ders_adi }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{% url 'ders_sil' ders.id %}" 
+                                           class="btn-delete-custom" 
+                                           onclick="return confirm('Bu kaydı silmek istediğinize emin misiniz?')">
+                                            <i class="bi bi-trash me-1"></i> Sil
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center py-5 text-muted">
+                                        <div class="mb-2"><i class="bi bi-calendar-x fs-1"></i></div>
+                                        Henüz bir program eklenmemiş.
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
