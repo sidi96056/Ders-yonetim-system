@@ -1,22 +1,26 @@
+
+grup adi : PyCorei5
+grup olnlar :
+SIDAHMED MOUHAMED BEWBE
+Proje adi : # Ders-yonetim-system
+
 # Ders-yonetim-system
 
 📚 Ders Yönetim System
 
-A Django-based course management system that allows administrators, teachers, and students to manage lessons, schedules, and academic records efficiently.
+Yöneticilerin, öğretmenlerin ve öğrencilerin dersleri, programları ve akademik kayıtları verimli bir şekilde yönetmelerini sağlayan Django tabanlı bir ders yönetim sistemi.
 
 ---
 
- 🚀 Features
-- User authentication (Admin, Teacher, Student roles)
-- Course creation and management
-- Student enrollment and tracking
-- Attendance and grading system
-- Responsive UI with Bootstrap/Tailwind (if used)
-- REST API endpoints for integration (optional)
+  Özellikler
+- Kullanıcı kimlik doğrulaması (Yönetici, Öğretmen, Öğrenci rolleri)
+- Kurs oluşturma ve yönetimi
+- Öğrenci kaydı ve takibi
+- Devam ve notlandırma sistemi
+- Bootstrap/Tailwind ile duyarlı kullanıcı arayüzü
+- Entegrasyon için REST API uç noktaları
 
----
-
- 🛠️ Tech Stack
+ Tech Stack
 - Backend:Django (Python)
 - Database:SQLite (default) or PostgreSQL/MySQL
 - Frontend: HTML, CSS, Bootstrap/Tailwind
@@ -24,45 +28,40 @@ A Django-based course management system that allows administrators, teachers, an
 
 ---
 
-📦 Installation
+ Kurulum
 
-1.Clone the repository
-   
-   git clone https://github.com/sidi96056/Ders-yonetim-system.git
-   cd Ders-yonetim-system
-   
+1. Depoyu klonlayın
 
-2. Create and activate virtual environment
+git clone https://github.com/sidi96056/Ders-yonetim-system.git
 
-   python -m venv venv
-   source venv/bin/activate   # On Linux/Mac
-   venv\Scripts\activate      # On Windows
+cd Ders-yonetim-system
 
+2. Sanal ortam oluşturun ve etkinleştirin
 
-3. Run migrations
+python -m venv venv
+source venv/bin/activate # Linux/Mac'te
+venv\Scripts\activate # Windows'ta
 
-   python manage.py makemigrations
-   python manage.py migrate
-  
+3. Migrasyonları çalıştırın
 
-5.Create superuser
-   python manage.py createsuperuser
+python manage.py makemigrations
+python manage.py migrate
 
-6.Start development server
-   
-   python manage.py runserver
-  
+5. Süper kullanıcı oluşturun
 
-📂 Project Structure
+python manage.py createssuperuser
+
+6. Geliştirme sunucusunu başlatın
+
+python manage.py runserver
+
+📂 Proje Yapısı
 
 Ders-yonetim-system/
-│── ders_yonetim/        # Main Django app
-│── templates/           # HTML templates
-│── static/              # CSS, JS, images
-│── manage.py            # Django management script
-└── README.md            # Project documentation
-
+│── ders_yonetim/ # Ana Django uygulaması
+│── templates/ # HTML şablonları
+│── static/ # CSS, JS, resimler
+│── manage.py # Django yönetim betiği
+└── README.md # Proje dokümantasyonu
 
 ---
-
-
