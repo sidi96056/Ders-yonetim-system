@@ -20,7 +20,8 @@ def calendar_view(request):
 def live_lesson_view(request):
     return render(request,"live_lesson.html")
 
-
+def lesson_view(request):
+    return render(request,"lesson.html")
 
 def login(request):
     return render(request,"login.html")
