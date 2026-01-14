@@ -33,4 +33,6 @@ urlpatterns = [
     path('calender/', include('management.urls')), 
     path('calender/sil/<int:id>/', include('management.urls'), name="ders_sil"),
     path('live_lesson/', include('management.urls')),
+    path('lesson/', include('app.urls')),
+    path('odev-sil/<int:odev_id>/', include('app.urls'), name="odev_sil"),
 ]
