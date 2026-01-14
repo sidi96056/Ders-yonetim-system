@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="container-fluid p-4" style="font-family: 'Inter', sans-serif; background-color: #f8f9fa; min-height: 100vh;">
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                    <h5 class="fw-bold text-dark mb-0" style="font-size: 1.1rem;">Yeni Ödev Ekle</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label fw-medium text-secondary small text-uppercase">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                        
+                        <button type="submit" class="btn btn-primary w-100 py-2 mt-2" style="background-color: #5d5fef; border: none; border-radius: 8px; font-weight: 600;">
+                            Ödevi Listeye Ekle
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                    <h5 class="fw-bold text-dark mb-0" style="font-size: 1.1rem;">Ödev Ajandam</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="text-secondary small text-uppercase">
+                                <tr>
+                                    <th class="border-0">Ödev Adı</th>
+                                    <th class="border-0 text-center">Son Tarih</th>
+                                    <th class="border-0 text-center">Durum</th>
+                                    <th class="border-0 text-end">İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for odev in odevler %}
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td class="py-3">
+                                        <div class="fw-semibold text-dark">{{ odev.baslik }}</div>
+                                        <div class="text-muted small">{{ odev.icerik|truncatechars:30 }}</div>
+                                    </td>
+                                    <td class="text-center text-muted small">
+                                        {{ odev.son_tarih|date:"d.m.Y" }}<br>
+                                        <strong>{{ odev.son_tarih|date:"H:i" }}</strong>
+                                    </td>
+                                    <td class="text-center">
+                                        {% if odev.tamamlandi %}
+                                            <span class="badge bg-success-soft text-success px-3 py-2" style="background-color: #e8f5e9; border-radius: 6px;">Tamamlandı</span>
+                                        {% else %}
+                                            <span class="badge bg-warning-soft text-warning px-3 py-2" style="background-color: #fff8e1; border-radius: 6px;">Bekliyor</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="{% url 'odev_sil' odev.id %}" class="text-danger text-decoration-none fw-bold small" onclick="return confirm('Bu ödevi silmek istediğine emin misin?')">
+                                            SİL
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center py-5 text-muted italic">
+                                        Henüz bir ödev eklenmemiş.
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+    /* Input kutularını resimdeki stile benzetmek için */
+    .form-control {
+        border-radius: 8px !important;
+        border: 1px solid #e0e0e0 !important;
+        padding: 10px !important;
+        font-size: 0.9rem !important;
+    }
+    .form-control:focus {
+        border-color: #5d5fef !important;
+        box-shadow: 0 0 0 0.2rem rgba(93, 95, 239, 0.1) !important;
+    }
+</style>
+{% endblock %}
