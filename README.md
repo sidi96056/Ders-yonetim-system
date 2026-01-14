@@ -1,18 +1,45 @@
 
-grup adi : PyCorei5
-grup olnlar :
+# grup adi : PyCorei5
+
+# grup olnlar :
+
 SIDAHMED MOUHAMED BEWBE
-Proje adi : # Ders-yonetim-system
+
+MUHAMMED ÇİLENK
+
+BURHAN KARA
+
+MUHAMMED ALİ KUMRU
+
+TUĞÇE KOMESU
+
+# Proje adi : # Ders-yonetim-system 
+
+# proje amacı:
+
+Bu platform, dersleri sadece rakamlarla değil, cümlelerle takip etmenizi sağlar. Öğretmen ve öğrencinin birlikte yazdığı dijital bir gelişim günlüğüdür.
+
+Öğrenciler İçin: "Bugün ne öğrendim?" sorusunun cevabını kendi cümlelerinle kaydettiğin, gelişimini adım adım izlediğin bir alan.
+
+Öğretmenler İçin: Her öğrencinin öğrenme yolculuğuna eşlik ettiğin, ders notlarının ötesinde gerçek gelişimi gördüğün bir rehber.
+
+Notlar bir gün unutulur, ama tutulan bu günlükler kalıcı bir başarı arşivi oluşturur.
+
+# grup üyesi hangi app den sorumlugu olanları:
+
+SIDAHMED MOUHAMED BEWBE  accounts ve DersYonetimsystemi uygulamalar
+
+MUHAMMED ÇİLENK management uygulaması 
+
+BURHAN KARA anasayfa , iletişim , hakkımızda 
+
+MUHAMMED ALİ KUMRU app uygulaması 
+
+TUĞÇE KOMESU abonelik ve planları
 
 # Ders-yonetim-system
 
-📚 Ders Yönetim System
-
-Yöneticilerin, öğretmenlerin ve öğrencilerin dersleri, programları ve akademik kayıtları verimli bir şekilde yönetmelerini sağlayan Django tabanlı bir ders yönetim sistemi.
-
----
-
-  Özellikler
+  # Özellikler
 - Kullanıcı kimlik doğrulaması (Yönetici, Öğretmen, Öğrenci rolleri)
 - Kurs oluşturma ve yönetimi
 - Öğrenci kaydı ve takibi
@@ -20,42 +47,42 @@ Yöneticilerin, öğretmenlerin ve öğrencilerin dersleri, programları ve akad
 - Bootstrap/Tailwind ile duyarlı kullanıcı arayüzü
 - Entegrasyon için REST API uç noktaları
 
- Tech Stack
+ $ Tech Stack
+ 
 - Backend:Django (Python)
-- Database:SQLite (default) or PostgreSQL/MySQL
+- Database:SQLite (default)
 - Frontend: HTML, CSS, Bootstrap/Tailwind
-- Other: Django REST Framework (if API enabled)
 
 ---
 
- Kurulum
+ # Kurulum
 
-1. Depoyu klonlayın
+# 1. Depoyu klonlayın
 
 git clone https://github.com/sidi96056/Ders-yonetim-system.git
 
 cd Ders-yonetim-system
 
-2. Sanal ortam oluşturun ve etkinleştirin
+# 2. Sanal ortam oluşturun ve etkinleştirin
 
 python -m venv venv
 source venv/bin/activate # Linux/Mac'te
 venv\Scripts\activate # Windows'ta
 
-3. Migrasyonları çalıştırın
+# 3. Migrasyonları çalıştırın
 
 python manage.py makemigrations
 python manage.py migrate
 
-5. Süper kullanıcı oluşturun
+# 5. Süper kullanıcı oluşturun
 
 python manage.py createssuperuser
 
-6. Geliştirme sunucusunu başlatın
+# 6. Geliştirme sunucusunu başlatın
 
 python manage.py runserver
 
-📂 Proje Yapısı
+#  Proje Yapısı
 
 Ders-yonetim-system/
 │── ders_yonetim/ # Ana Django uygulaması
