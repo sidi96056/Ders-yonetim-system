@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'app.apps.AppConfig',
     'management.apps.ManagementConfig',
     'Dersyonetimsystemi',
     'django.contrib.admin',
@@ -134,4 +135,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'  # The name of your login URL pattern
 LOGIN_REDIRECT_URL = 'home' # Where to go after a successful login
+
 
